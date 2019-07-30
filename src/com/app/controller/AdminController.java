@@ -216,6 +216,13 @@ public class AdminController {
 		return "admin/addTopic";
 	}
 
+	@GetMapping("/topiclist")
+	public String getTopic(@RequestParam int id, Topic t, Model map) {
+		System.out.println("In Topic List Form");
+		Set<Topic> list = new HashSet<Topic>(service.getTopicList(id));
+		map.addAttribute("topic_list", list);
+		return "admin/tlist";
+	}
 	@PostMapping("/topic")
 	public String processTopicForm(@RequestParam int id, Topic t, HttpSession hs, Model map) {
 		System.out.println("In Topic Registration Form");
@@ -338,7 +345,7 @@ public class AdminController {
 		// discard session
 		hs.invalidate();
 		// auto redirect clnt after a delay to index page
-		response.setHeader("refresh", "5;url=" + request.getContextPath());
+		response.setHeader("refresh", "1;url=" + request.getContextPath());
 		return "student/logout";
 	}
 }

@@ -50,8 +50,7 @@ public class IAdminDaoImpl implements IAdminDao {
 		{
 			e.printStackTrace();
 		}
-		return msg;
-		
+		return msg;		
 	}
 	
 	@Override
@@ -245,6 +244,15 @@ public class IAdminDaoImpl implements IAdminDao {
 			e.printStackTrace();
 		}
 		return msg;
+	}
+	@Override
+	public List<Topic> getTopicList(int moduleId) {
+		System.out.println("In Topic List");
+		//Modules m = sf.getCurrentSession().get(Modules.class,moduleId);
+		String jpql = "select t from Topic t JOIN t.module m where m.moduleId =:moduleId";
+		List<Topic> list = sf.getCurrentSession().createQuery(jpql,Topic.class).setParameter("moduleId", moduleId).getResultList();
+		list.forEach(System.out::println);
+		return list;
 	}
 		
 }

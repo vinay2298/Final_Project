@@ -184,7 +184,7 @@ public class StudentController {
 		// discard session
 		hs.invalidate();
 		// auto redirect clnt after a delay to index page
-		response.setHeader("refresh", "5;url=" + request.getContextPath());
+		response.setHeader("refresh", "1;url=" + request.getContextPath());
 		return "student/logout";
 	}
 	

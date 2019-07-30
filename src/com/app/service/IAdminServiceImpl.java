@@ -125,4 +125,10 @@ public class IAdminServiceImpl implements IAdminService {
 		System.out.println("In Admin Updation Form");
 		return dao.updateAdmin(id,newpassword);
 	}
+
+	@Override
+	public List<Topic> getTopicList(int id) {
+		System.out.println("In Topic List");
+		return dao.getTopicList(id);
+	}
 }

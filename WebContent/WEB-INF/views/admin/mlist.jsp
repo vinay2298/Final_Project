@@ -43,6 +43,7 @@ button {
 		<th><b>End Date</b></th>
 		<th><b>Status</b></th>
 		<th><b>Add Topic</b></th>
+		<th><b>Topic List</b></th>
 	</table>
 	<c:forEach var="module" items="${requestScope.module_list}">
 		<table>
@@ -53,6 +54,7 @@ button {
 				<td>${module.endDate}</td>
 				<td>${module.status}</td>
 				<td><a href="<spring:url value='/admin/topic?id=${module.moduleId}'/>"><button>Add Topic</button></a></td>
+				<td><a href="<spring:url value='/admin/topiclist?id=${module.moduleId}'/>"><button>Topic List</button></a></td>
 				<%-- <td><a href="admin/update?id=${cust.courseId}">update</a></td> --%>
 			</tr>
 		</table>		

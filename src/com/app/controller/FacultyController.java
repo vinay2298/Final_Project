@@ -1,7 +1,9 @@
 package com.app.controller;
 import java.io.File;
 import java.io.IOException;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import javax.persistence.NoResultException;
 import javax.servlet.http.HttpServletRequest;
@@ -22,7 +24,6 @@ import com.app.service.IFacultyService;
 import pojos.Content;
 import pojos.Faculty;
 import pojos.Modules;
-import pojos.Student;
 import pojos.Topic;
 
 @Controller
@@ -120,7 +121,7 @@ public class FacultyController {
 	public String showTopicList(@RequestParam int id,Topic t,Model map)
 	{
 		System.out.println("In Show Topic List");
-		List<Topic> list = service.getTopicList(id);
+		Set<Topic> list = new HashSet<Topic>(service.getTopicList(id));
 		map.addAttribute("topic_list", list);
 		return "faculty/tlist";
 	}
@@ -172,7 +173,7 @@ public class FacultyController {
 		// discard session
 		hs.invalidate();
 		// auto redirect clnt after a delay to index page
-		response.setHeader("refresh", "5;url=" + request.getContextPath());
+		response.setHeader("refresh", "1;url=" + request.getContextPath());
 		return "student/logout";
 	}
 }

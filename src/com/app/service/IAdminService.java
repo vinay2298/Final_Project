@@ -28,5 +28,6 @@ public interface IAdminService {
 	List<Course> getCourseList(int id);
 	String registerTopic(int id, Topic t);
 	String updateAdmin(int id, String newpassword);
+	List<Topic> getTopicList(int id);
 	
 }
