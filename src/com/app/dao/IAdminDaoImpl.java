@@ -254,5 +254,11 @@ public class IAdminDaoImpl implements IAdminDao {
 		list.forEach(System.out::println);
 		return list;
 	}
+	@Override
+	public Course getMyCourseDetails(int courseId) {
+		System.out.println("In Course Details");
+		Course c = sf.getCurrentSession().get(Course.class, courseId);
+		return c;
+	}
 		
 }

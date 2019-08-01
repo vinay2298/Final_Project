@@ -50,7 +50,7 @@ input[type=text]{
 	<div>
 		<h1 align="center"><b><font color="white">CDAC MANAGEMENT SYSTEM</font></b></h1>
 	</div>
-	<h3 align="left">${status}</h3>
+	<h3 align="left">${requestScope.status}</h3>
 	<form method="post">
 		<h1 align="center">ADMIN LOGIN</h1>	
 		<table>

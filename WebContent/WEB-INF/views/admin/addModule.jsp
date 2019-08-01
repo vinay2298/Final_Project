@@ -51,7 +51,7 @@ input[type=number]{
 
 </head>
 <body>
-	<h3 align="center">${mesg}</h3>
+	<h3 align="center">${requestScope.mesg}</h3>
 	<form:form method="post" modelAttribute="modules">
 		<h1 align="center">ADD MODULE</h1>
 		<table>

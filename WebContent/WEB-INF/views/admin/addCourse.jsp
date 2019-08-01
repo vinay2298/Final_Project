@@ -51,7 +51,7 @@ input[type=text]{
 </style>
 </head>
 <body>
-	<h3 align="center">${mesg}</h3>
+	<h3 align="center">${requestScope.mesg}</h3>
 	<div>
 	<form:form method="post" modelAttribute="course">
 		<h1 align="center">ADD COURSE</h1>

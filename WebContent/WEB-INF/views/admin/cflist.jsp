@@ -29,7 +29,6 @@ button {
   border-radius:4px;
 }
 </style>
-
 </head>
 <body>
 <h1><a href="home"><button>Home</button></a></h1>
@@ -37,11 +36,11 @@ button {
 	<div align="center">
 	<h3 align="center">Course List</h3>
 	<table>
-	<th><b>Course ID</b></th>
+		<th><b>Course ID</b></th>
 		<th><b>Course Name</b></th>
 		<th><b>Course Strength</b></th>
 		<th><b>Course Duration</b></th>
-		<th><b>Modules</b></th>		
+		<th><b>Add Faculty</b></th>
 	</table>
 	<c:forEach var="cust" items="${requestScope.course_list}">
 		<table>
@@ -50,9 +49,7 @@ button {
 				<td>${cust.courseName}</td>
 				<td>${cust.courseStrength}</td>
 				<td>${cust.duration}</td>
-				<td><a href="<spring:url value='/student/module?id=${cust.courseId}'/>"><button>Module List</button></a></td>
-				<%-- <td><a href="<spring:url value='/student/faculty?id=${cust.courseId}'/>">Faculty List</a></td> --%>
-				<%-- <td><a href="<spring:url value='/a/student?id=${cust.courseId}'/>">Student List</a></td> --%>
+				<td><a href="<spring:url value='/admin/facultyadd?id=${cust.courseId}'/>"><button>Add Faculty</button></a></td>
 				<%-- <td><a href="admin/update?id=${cust.courseId}">update</a></td> --%>
 			</tr>
 		</table>		

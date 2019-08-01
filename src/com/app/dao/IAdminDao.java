@@ -30,5 +30,6 @@ public interface IAdminDao {
 	String registerTopic(int id, Topic t);
 	List<Course> getCourseList(int id);
 	String updateAdmin(int id, String newpassword);
-	List<Topic> getTopicList(int id);	
+	List<Topic> getTopicList(int id);
+	Course getMyCourseDetails(int id);
 }

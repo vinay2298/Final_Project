@@ -131,4 +131,10 @@ public class IAdminServiceImpl implements IAdminService {
 		System.out.println("In Topic List");
 		return dao.getTopicList(id);
 	}
+
+	@Override
+	public Course getCourseDetails(int id) {
+		System.out.println("In Course Details");
+		return dao.getMyCourseDetails(id);
+	}
 }

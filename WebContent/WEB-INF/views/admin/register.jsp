@@ -41,7 +41,7 @@ input[type=text],[type=email],[type=password]{
 
 </head>
 <body>
-	<h3 align="center">${mesg}</h3>
+	<h3 align="center">${requestScope.mesg}</h3>
 	<div align="center">
 	
 	<form:form method="post" modelAttribute="coordinator">

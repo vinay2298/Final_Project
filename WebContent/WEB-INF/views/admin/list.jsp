@@ -32,7 +32,7 @@ button {
 </head>
 <body>
 <h1><a href="home"><button>Home</button></a></h1>
-	<h3 align="left">${msg}</h3>
+	<h3 align="left">${requestScope.msg}</h3>
 	<div align="center">
 	<h3 align="center">Course List</h3>
 	<table>

@@ -168,13 +168,20 @@ public class AdminController {
 	}
 
 	@GetMapping("/addFaculty")
-	public String showAddFaculty(Faculty f) {
-		System.out.println("in show reg form " + f);
+	public String showAddFaculty(Model map,HttpSession hs) {
+		// System.out.println("in show reg form " + f);
 		// map.addAttribute(new Course());
-		return "admin/addFaculty";
+		Coordinator c = (Coordinator) hs.getAttribute("admin_dtls");
+		int id = c.getCoordinatorid();
+		System.out.println(id);
+		List<Course> list = service.getCourseList(id);
+		list.forEach(System.out::println);
+		map.addAttribute("course_list", list);		
+		
+		return "admin/cflist";
 	}
 
-	@PostMapping("/addFaculty")
+	@PostMapping("/facultyadd")
 	public String processRegForm(@RequestParam int id, Faculty f, HttpSession hs, Model map) {
 		System.out.println("in process reg form");
 		System.out.println("Course details " + f + "With Coordinator ID" + id);
@@ -185,14 +192,36 @@ public class AdminController {
 		map.addAttribute("status", "Faculty Added Successfully");
 		return "redirect:home";// replace forward by redirect
 	}
-
 	@GetMapping("/addStudent")
-	public String showAddStudent(Student s) {
+	public String showCourseStudentAdd(Model map,HttpSession hs) {
+		/* System.out.println("In show Reg Form" + s); */
+		Coordinator c = (Coordinator) hs.getAttribute("admin_dtls");
+		int id = c.getCoordinatorid();
+		System.out.println(id);
+		List<Course> list = service.getCourseList(id);
+		list.forEach(System.out::println);
+		map.addAttribute("course_list", list);		
+		return "admin/cslist";
+	}
+	@GetMapping("/facultyadd")
+	public String processFacultyAdd(Faculty f,@RequestParam int id,Model map)
+	{
+		Course c = service.getCourseDetails(id);
+		System.out.println("In show Reg Form "+f);
+		map.addAttribute("course_dtls",c);
+		return "admin/addFaculty";
+	}
+	
+	@GetMapping("/studentadd")
+	public String showStudentAddForm(Student s,@RequestParam int id,HttpSession hs,Model map)
+	{
+		Course c = service.getCourseDetails(id);
 		System.out.println("In show Reg Form" + s);
+		map.addAttribute("course_dtls",c);
+		System.out.println(c);
 		return "admin/addStudent";
 	}
-
-	@PostMapping("/addStudent")
+	@PostMapping("/studentadd")
 	public String processRegForm(@RequestParam int id, Student s, HttpSession hs, Model map) {
 		System.out.println("In Student Registration Form");
 		System.out.println("Student Details" + s);

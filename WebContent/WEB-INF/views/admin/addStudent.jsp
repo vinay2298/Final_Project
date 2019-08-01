@@ -78,7 +78,7 @@ input[type=date]{
 			</tr>
 			<tr>
 				<td>Enter the Course Id</td>
-				<td><input type="number" name="id" required="required"></td>
+				<td><input type="number" name="id" value="${requestScope.course_dtls.courseId}" readonly="readonly"></td>
 			</tr>
 			<tr>
 				<td></td><td align="left"><input type="submit" value="ADD STUDENT" /></td>

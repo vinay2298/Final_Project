@@ -49,7 +49,7 @@ input[type=text]{
 </style>
 </head>
 <body>
-	<h3 align="left">${status}</h3>
+	<h3 align="left">${requestScope.status}</h3>
 	<div>
 		<h1 align="center">CDAC MANAGEMENT SYSTEM</h1>
 	</div>	

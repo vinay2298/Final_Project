@@ -59,7 +59,7 @@ div#std{
 <h1 align="center">CDAC MANAGEMENT SYSTEM</h1>
 <h4 align="right">Welcome ${sessionScope.student_dtls.studentName} |<a href="update"><button id="det"><b>Change Password</b></button></a> | <a href="logout"><button id="det"><b>LOGOUT</b></button></a></h4>
 </div>	
-<h3>${msg}</h3>
+<h3>${requestScope.msg}</h3>
 <div id="std" align="center">
 <h3 align="center">Welcome to Student Home Page</h3>
 <a href="course"><button>My Course</button></a>

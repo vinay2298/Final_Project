@@ -60,9 +60,9 @@ button#det{
 <h4 align="right">Welcome ${sessionScope.admin_dtls.coordinatorName} | <a href="updatePassword"><button id="det"><b>Change Password</b></button></a>|<a href="logout"><button id="det"><b>LOGOUT</b></button></a></h4>
 </div>	
 <h1 align="center">Welcome to Admin Home Page</h1>
-<h3 align="left">${sessionScope.status}</h3>
-<h3 align="left">${sessionScope.msg}</h3>
-<h3 align="left">${sessionScope.passmsg}</h3>
+<h3 align="left">${requestScope.status}</h3>
+<h3 align="left">${requestScope.msg}</h3>
+<h3 align="left">${requestScope.passmsg}</h3>
 <div id="add">
 	<b><a href ="addCourse"><button>Add Course</button></a><br><br>
 	<a href ="addStudent"><button>Add Student</button></a><br><br>

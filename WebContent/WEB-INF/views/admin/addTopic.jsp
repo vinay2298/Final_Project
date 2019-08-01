@@ -42,7 +42,7 @@ input[type=text]{
 
 </head>
 <body>
-	<h3 align="center">${mesg}</h3>
+	<h3 align="center">${requestScope.mesg}</h3>
 	<form:form method="post" modelAttribute="topic">
 		<h1 align="center">ADD TOPIC</h1>
 		<table>
