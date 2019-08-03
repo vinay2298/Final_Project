@@ -77,10 +77,10 @@ input[type=number]{
 				<td><input type="number" name="fid" required="required"></td>
 				<td>
 			</tr>
-			<tr>
+			<!-- <tr>
 				<td>Enter the Course Id</td>
 				<td><input type="number" name="id" required="required"></td>
-			</tr>
+			</tr> -->
 			<tr>
 				<td></td><td align="center"><input type="submit" value="ADD MODULE" /></td>
 			</tr>

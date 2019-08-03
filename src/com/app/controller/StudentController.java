@@ -27,7 +27,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.app.service.IStudentService;
 
 import pojos.Content;
-import pojos.Coordinator;
 import pojos.Course;
 import pojos.Modules;
 import pojos.Student;
@@ -65,7 +64,7 @@ public class StudentController {
 		{
 			
 			System.out.println("Invalid Login :"+e);
-			map.addAttribute("status","Invalid Login , Please Retry");
+			hs.setAttribute("status","Invalid Login , Please Retry");
 			return "student/login";
 		}
 	}
@@ -96,17 +95,19 @@ public class StudentController {
 		
 		if(pass.equals(oldpassword))
 		{
-		System.out.println("HHHHH");
+		//System.out.println("HHHHH");
 		msg = service.updateStudent(id,newpassword);
 		}
 		hs.setAttribute("msg", msg);
 		System.out.println(s);
 		if(msg != null)
 		{
+			hs.setAttribute("status","Password Updated Successfully");
 		return "redirect:home";// replace forward by redirect
 		}
 		else
 		{
+			hs.setAttribute("status","Old Password Doesnot Match");
 			return "update";
 		}
 	}
@@ -164,6 +165,11 @@ public class StudentController {
 		 * outputStream.write(errorMessage.getBytes(Charset.forName("UTF-8")));
 		 * outputStream.close(); return; }
 		 */         
+		/*
+		 *            			**** MIME ****
+		 * MIME stands for Multi-purpose Internet Mail Extensions. MIME types form a
+		 * standard way of classifying file types on the Internet.
+		 */
         String mimeType= URLConnection.guessContentTypeFromName(file.getName());
         if(mimeType==null){
             System.out.println("mimetype is not detectable, will take default");

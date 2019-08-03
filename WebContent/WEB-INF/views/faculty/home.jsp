@@ -60,8 +60,7 @@ div#fct{
 	<h1>CDAC MANAGEMENT SYSTEM</h1>
 	<h4 align="right">Welcome ${sessionScope.faculty_dtls.facultyName}|<a href="update"><button id="det">Change Password</button></a>| <a href="logout"><button id="det">LOGOUT</button></a></h4>
 </div>
-<h3>${requestScope.msg}</h3>
-<h3>${requestScope.status}</h3>
+<h3>${status}</h3>
 <div id="fct">
 <h3>Welcome</h3>
 <a href="moduleList"><button>My Modules</button></a>

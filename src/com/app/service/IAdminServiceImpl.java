@@ -37,9 +37,9 @@ public class IAdminServiceImpl implements IAdminService {
 	
 
 	@Override
-	public String registerModule(int id,int fid, Modules m) {
+	public String registerModule(int fid, Modules m) {
 		System.out.println("In Module Registration Form");
-		return dao.registerModule(id,fid,m);
+		return dao.registerModule(fid,m);
 	}
 
 	@Override

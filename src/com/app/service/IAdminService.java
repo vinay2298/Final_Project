@@ -13,7 +13,7 @@ public interface IAdminService {
 
 	Coordinator validateAdmin(String email, String password);
 	String registerCourse(int coordinatorid,Course c);
-	String registerModule(int id,int fid, Modules m);
+	String registerModule(int fid, Modules m);
 	String registerFaculty(int id, Faculty f);
 	String registerStudent(int id, Student s);
 	Course getCourseDetails(int coordinatorid,int id);

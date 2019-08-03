@@ -41,6 +41,7 @@ public class FacultyController {
 	{
 		System.out.println("In show Login Form Faculty");
 		return "faculty/login";
+	
 	}
 	@PostMapping("/login")
 	public String processLoginForm(@RequestParam String email,@RequestParam String password,HttpSession hs,Model map)
@@ -52,16 +53,17 @@ public class FacultyController {
 			if(f!=null)
 			{
 				hs.setAttribute("faculty_details", f);
-				map.addAttribute("status"," Successfull Login");
+				hs.setAttribute("status"," Successfull Login");
 				return "redirect:home";
 			}
 		}
 		catch(NoResultException e)
 		{
 			e.printStackTrace();
-			map.addAttribute("status","InValid Email or Password");
-			return "faculty/login";
+			//return "faculty/login";
 		}
+		
+		hs.setAttribute("status","InValid Email or Password");	
 		return "faculty/login";
 	}
 	@GetMapping("/home")
@@ -91,10 +93,10 @@ public class FacultyController {
 		
 		if(pass.equals(oldpassword))
 		{
-		System.out.println("HHHHH");
+		//System.out.println("HHHHH");
 		msg = service.updateFaculty(id,newpassword);
 		}
-		hs.setAttribute("msg", msg);
+		hs.setAttribute("status", msg);
 		System.out.println(f);
 		if(msg != null)
 		{
@@ -159,11 +161,9 @@ public class FacultyController {
 		System.out.println(path);
 		c.setContentPath(path);
 		String s = service.updateTopic(t,c);
+		System.out.println(s);
+		hs.setAttribute("status","Data Uploaded Successfully");
 		return "redirect:home";
-	}
-	@GetMapping("/uploadStatus")
-	public String uploadStatus() {
-		return "uploadStatus";
 	}
 	@GetMapping("/logout")
 	public String logoutAdmin(Model map, HttpSession hs, HttpServletRequest request, HttpServletResponse response) {
@@ -174,6 +174,6 @@ public class FacultyController {
 		hs.invalidate();
 		// auto redirect clnt after a delay to index page
 		response.setHeader("refresh", "1;url=" + request.getContextPath());
-		return "student/logout";
+		return "faculty/logout";
 	}
 }

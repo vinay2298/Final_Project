@@ -14,7 +14,7 @@ import pojos.Topic;
 public interface IAdminDao {
 	Coordinator validateAdmin(String email, String password);
 	String registerCourse(int coordinatorid,Course c);
-	String registerModule(int courseId,int facultyId, Modules m);
+	String registerModule(int facultyId, Modules m);
 	String registerFaculty(int courseId, Faculty f);
 	String registerStudent(int courseId, Student s);
 	Course getCourseDetails(int coordinatorid,int courseId);

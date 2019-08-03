@@ -42,6 +42,7 @@ input[type=text],[type=email],[type=password]{
 </head>
 <body>
 	<div align="center">
+	<h3 align="left">${status}</h3>
 	<form method="post">
 	<h1 align="center">Change Password</h1>
 		<table>

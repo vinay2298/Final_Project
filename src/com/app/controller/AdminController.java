@@ -48,7 +48,7 @@ public class AdminController {
 		System.out.println("This is Validate Login in Admin with email " + email + " and password " + password);
 		try {
 			Coordinator c = service.validateAdmin(email, password);
-			map.addAttribute("status", "Successful Login");
+			hs.setAttribute("status", "Successful Login");
 			hs.setAttribute("admin_dtls", c);
 			return "redirect:/admin/home";
 
@@ -83,10 +83,10 @@ public class AdminController {
 		String pass = s.getPassword();
 
 		if (pass.equals(oldpassword)) {
-			System.out.println("HHHHH");
+			//System.out.println("HHHHH");
 			msg = service.updateAdmin(id, newpassword);
 		}
-		map.addAttribute("passmsg", msg);
+		hs.setAttribute("status", msg);
 		System.out.println(s);
 		if (msg != null) {
 			return "redirect:home";// replace forward by redirect
@@ -110,7 +110,7 @@ public class AdminController {
 		String s = service.registerCoordinator(c);
 		System.out.println(s);
 		// hs.setAttribute("addCoordinator", s);
-		map.addAttribute("status", s);
+		hs.setAttribute("status", s);
 		return "redirect:login";// replace forward by redirect
 	}
 
@@ -129,7 +129,7 @@ public class AdminController {
 		String s = service.registerCourse(id, c);
 		System.out.println(s);
 		hs.setAttribute("addCourse", s);
-		map.addAttribute("status", "Course Added Successfully");
+		hs.setAttribute("status", "Course Added Successfully");
 		return "redirect:home";// replace forward by redirect
 	}
 
@@ -152,17 +152,17 @@ public class AdminController {
 	}
 
 	@PostMapping("/addModule")
-	public String processRegForm(@RequestParam int id, @RequestParam int fid, Modules m, Model map, HttpSession hs) {
+	public String processRegForm(@RequestParam int fid, Modules m, Model map, HttpSession hs) {
 		System.out.println("In Modules Registration Form");
 		System.out.println("Module Details");
 
-		String s = service.registerModule(id, fid, m);
+		String s = service.registerModule(fid, m);
 		hs.setAttribute("addModule", m);
 		if (s != null) {
-			map.addAttribute("status", "Module Added Successfully");
+			hs.setAttribute("status", "Module Added Successfully");
 			return "redirect:home";
 		} else {
-			map.addAttribute("status", "Module Cannot be Added");
+			hs.setAttribute("status", "Module Cannot be Added");
 			return "addModule";
 		}
 	}
@@ -189,7 +189,7 @@ public class AdminController {
 		String s = service.registerFaculty(id, f);
 		System.out.println(s);
 		hs.setAttribute("addFaculty", s);
-		map.addAttribute("status", "Faculty Added Successfully");
+		hs.setAttribute("status", "Faculty Added Successfully");
 		return "redirect:home";// replace forward by redirect
 	}
 	@GetMapping("/addStudent")
@@ -229,10 +229,10 @@ public class AdminController {
 		String msg = service.registerStudent(id, s);
 		// hs.setAttribute("addStudent", msg);
 		if (msg != null) {
-			map.addAttribute("status", "Student Added Successfully");
+			hs.setAttribute("status", "Student Added Successfully");
 			return "redirect:home";
 		} else {
-			map.addAttribute("status", "Student Cannot be Added");
+			hs.setAttribute("status", "Student Cannot be Added");
 			return "addStudent";
 		}
 	}
@@ -258,10 +258,10 @@ public class AdminController {
 		System.out.println("Topic Details " + t);
 		String msg = service.registerTopic(id, t);
 		if (msg != null) {
-			map.addAttribute("status", "Topic Added Successfully");
+			hs.setAttribute("status", "Topic Added Successfully");
 			return "redirect:home";
 		} else {
-			map.addAttribute("status", "Topic Cannot be Added");
+			hs.setAttribute("status", "Topic Cannot be Added");
 			return "admin/topic";
 		}
 	}
@@ -286,7 +286,7 @@ public class AdminController {
 		// invoke service layer method
 		// hs.removeAttribute("course_dtls");
 		String s = service.updateCourse(id, c);
-		map.addAttribute("msg", s);
+		hs.setAttribute("status", s);
 		System.out.println(s);
 		return "redirect:home";// replace forward by redirect
 	}
@@ -375,6 +375,6 @@ public class AdminController {
 		hs.invalidate();
 		// auto redirect clnt after a delay to index page
 		response.setHeader("refresh", "1;url=" + request.getContextPath());
-		return "student/logout";
+		return "admin/logout";
 	}
 }

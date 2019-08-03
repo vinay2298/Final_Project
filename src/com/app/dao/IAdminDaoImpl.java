@@ -11,7 +11,6 @@ import org.springframework.stereotype.Repository;
 
 import pojos.Coordinator;
 import pojos.Course;
-import pojos.Course_Modules;
 import pojos.Faculty;
 import pojos.Modules;
 import pojos.Student;
@@ -54,12 +53,13 @@ public class IAdminDaoImpl implements IAdminDao {
 	}
 	
 	@Override
-	public String registerModule(int courseId,int facultyId, Modules m) {
+	public String registerModule(int facultyId, Modules m) {
 		String msg = null;
+		String jpql = "select c from Course c JOIN c.faculty f where f.facultyId =:facultyId";
 		Session hs = sf.getCurrentSession();
 		System.out.println("In Module Registration Dao");
 		try {
-			Course c = hs.get(Course.class, courseId);
+			Course c = hs.createQuery(jpql, Course.class).setParameter("facultyId", facultyId).getSingleResult();
 			Faculty f = hs.get(Faculty.class,facultyId);
 			int id = c.getCourseId();
 			System.out.println(id);
