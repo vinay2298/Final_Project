@@ -1,5 +1,5 @@
 # Final_Project
-CDAC MANAGEMENT SYSTEM
+Course MANAGEMENT SYSTEM
 This Contains all the Files of my work.
 I have done the Project Using SPRING MVC Hibernate in The BackEnd .
 I have used CSS and JSP for the Front End .
